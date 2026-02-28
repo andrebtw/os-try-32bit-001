@@ -1,5 +1,5 @@
-#include "io.h"
-#include "stdint.h"
+#include "../include/io.h"
+#include "../include/stdint.h"
 
 // Read a byte from a port 
 uint8 inb(uint16 port)

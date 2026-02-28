@@ -1,4 +1,4 @@
-#include "stdint.h"
+#include "../../include/stdint.h"
 
 uint64 strlen(char *string)
 {

@@ -14,10 +14,10 @@ HEADER_DIR      = include
 SRC_DIR         = src
 
 # Source files
-HEADER_FILES    = kernel vga_text stdint io keyboard debug stdlib ATA interrupts paging tests/drive_tests tests/paging_tests 
+HEADER_FILES    = kernel vga_text stdint io keyboard debug stdlib ATA interrupts paging tests/drive_tests tests/paging_tests disk_io
 HEADERS         = $(addsuffix .h, $(addprefix $(HEADER_DIR)/, $(HEADER_FILES)))
 
-C_SRC_FILES     = kernel_entry vga_text io keyboard debug stdlib/strlen ATA IDT vmem/paging tests/drive_tests tests/paging_tests 
+C_SRC_FILES     = kernel_entry vga_text io/io keyboard debug stdlib/strlen io/ATA IDT vmem/paging tests/drive_tests tests/paging_tests io/disk_io
 C_SOURCES       = $(addsuffix .c, $(addprefix $(SRC_DIR)/, $(C_SRC_FILES)))
 
 # Assembly files

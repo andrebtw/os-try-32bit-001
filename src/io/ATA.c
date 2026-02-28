@@ -1,6 +1,6 @@
-#include "../include/ATA.h"
-#include "../include/io.h"
-#include "../include/vga_text.h"
+#include "../../include/ATA.h"
+#include "../../include/io.h"
+#include "../../include/vga_text.h"
 
 static void Wait_400ns(void)
 {
@@ -56,7 +56,7 @@ static int8 Wait_Until_Drive_Ready(void)
     return 0;
 }
 
-int8    drive_init(void)
+int8    drive_init_ATA(void)
 {
     uint16 buffer[256];
 
@@ -100,7 +100,7 @@ int8    drive_init(void)
 /*
 works i think
 */
-int8   read_sectors(uint32 lba, uint32 sector_count, uint8 *buffer)
+int8   read_sectors_ATA(uint32 lba, uint32 sector_count, uint16 *buffer)
 {
     uint64 buffer_index = 0;
     uint16 data;
@@ -130,8 +130,7 @@ int8   read_sectors(uint32 lba, uint32 sector_count, uint8 *buffer)
     for (uint64 i = 0; i < 256 * sector_count; i++)
     {
         data = inw(ATA_DATA_PORT);
-        buffer[i * 2 + buffer_index] = (uint8)(data & 0xFF);
-        buffer[i * 2 + 1 + buffer_index] = (uint8)(data >> 8);
+        buffer[i] = (uint16)data;
     }
     return 0;
 }
@@ -141,7 +140,7 @@ int8   read_sectors(uint32 lba, uint32 sector_count, uint8 *buffer)
 Todo :
 Should work?
 */
-int8    write_sectors(uint32 lba, uint32 sector_count, uint16 *words, uint64 len)
+int8    write_sectors_ATA(uint32 lba, uint32 sector_count, uint16 *words, uint64 len)
 {
     uint64 buffer_index = 0;
     uint16 data;

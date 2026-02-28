@@ -18,7 +18,7 @@ void kmain(void)
     outb(0x64, 0xAE); // enables PS/2 port 
     VGA_fill_screen(VGA_BLACK_COLOR);
 
-    drive_init();
+    drive_init_ATA();
     paging_init();
     
     VGA_print_str("OS Initialised.", 0, 10, VGA_BLACK_COLOR, VGA_GREEN_COLOR);
