@@ -1,6 +1,7 @@
 #include "../../include/stdint.h"
 #include "../../include/ATA.h"
 #include "../../include/vga_text.h"
+#include "../../include/stdlib.h"
 
 void drive_test()
 {
@@ -37,10 +38,7 @@ void drive_test()
     }
 
     uint16 words[256];
-    for (size_t i = 0; i < 256; i++)
-    {
-        words[i] = 0x67;
-    }
+    memset(words, 0x67, 256);
 
 
     if (write_sectors_ATA(15, 1, words, 1))

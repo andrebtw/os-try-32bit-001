@@ -17,11 +17,10 @@ typedef uint16 uint16_t;
 typedef uint32 uint32_t;
 
 
-
-
 /* float typedef */
 typedef float               float32;
 typedef double              float64;
 
+#define NULL ((void *)0)
 
 #endif

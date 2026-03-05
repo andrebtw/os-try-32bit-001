@@ -22,5 +22,8 @@ extern void enable_paging();
 #define PS_FLAG 0b10000000
 
 // is used to determine if a page has been written to
-#define D_FLAG 0b
+// #define D_FLAG 0b
+
+uint32 alloc_frame(void);
+
 #endif

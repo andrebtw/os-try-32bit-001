@@ -4,15 +4,16 @@
 
 uint32 disk_use = ATA;
 
-uint8 read_sectors(uint32 lba, uint32 sector_count, uint16 *buffer)
+uint16 *read_sectors(uint32 lba, uint32 sector_count)
 {
+    uint16 buffer[256 * sector_count];
+
     if (disk_use == ATA)
     {
         uint32 ret_code = read_sectors_ATA(lba, sector_count, buffer);
         if (ret_code)
-            return ret_code;
+            return NULL;
     }
 
-    return 0;
+    return buffer;
 }
-
